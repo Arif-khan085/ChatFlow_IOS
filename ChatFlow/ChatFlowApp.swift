@@ -5,20 +5,6 @@
 //  Created by Arif on 07/07/2026.
 //
 
-//import SwiftUI
-//import FirebaseCore
-//
-//@main
-//struct ChatFlowApp: App {
-//    var body: some Scene {
-//        WindowGroup {
-//            
-//            NavigationStack{
-//                RootView()
-//            }
-//        }
-//    }
-//}
 
 import SwiftUI
 import FirebaseCore

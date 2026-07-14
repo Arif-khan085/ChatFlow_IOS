@@ -6,27 +6,7 @@
 //
 
 
-//import Foundation
-//
-//struct User: Identifiable, Codable {
-//
-//    var id: String
-//    var fullName: String
-//    var email: String
-//    var profileImageURL: String?
-//
-//    init(
-//        id: String,
-//        fullName: String,
-//        email: String,
-//        profileImageURL: String? = nil
-//    ) {
-//        self.id = id
-//        self.fullName = fullName
-//        self.email = email
-//        self.profileImageURL = profileImageURL
-//    }
-//}
+
 
 import Foundation
 import FirebaseFirestore
