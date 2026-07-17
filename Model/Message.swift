@@ -1,12 +1,22 @@
+////
+////  Message.swift
+////  ChatFlow
+////
+////  Created by Arif on 12/07/2026.
+////
 //
-//  Message.swift
-//  ChatFlow
 //
-//  Created by Arif on 12/07/2026.
 //
-
+//
 //import Foundation
 //import FirebaseFirestore
+//
+//enum MessageStatus: String {
+//
+//    case sent
+//    case delivered
+//    case read
+//}
 //
 //struct Message: Identifiable {
 //
@@ -14,6 +24,12 @@
 //    let senderId: String
 //    let text: String
 //    let timestamp: Timestamp
+//    let status: MessageStatus
+//    let deletedFor: [String]
+//
+//    // MARK: - Reply Info
+//    let replyToText: String?
+//    let replyToSenderId: String?
 //
 //    init?(document: QueryDocumentSnapshot) {
 //
@@ -31,6 +47,21 @@
 //        self.senderId = senderId
 //        self.text = text
 //        self.timestamp = timestamp
+//
+//        if let statusString = data["status"] as? String,
+//           let messageStatus = MessageStatus(rawValue: statusString) {
+//
+//            self.status = messageStatus
+//
+//        } else {
+//
+//            self.status = .sent
+//        }
+//
+//        self.deletedFor = data["deletedFor"] as? [String] ?? []
+//
+//        self.replyToText = data["replyToText"] as? String
+//        self.replyToSenderId = data["replyToSenderId"] as? String
 //    }
 //}
 
@@ -52,6 +83,14 @@ struct Message: Identifiable {
     let text: String
     let timestamp: Timestamp
     let status: MessageStatus
+    let deletedFor: [String]
+
+    // MARK: - Reply Info
+    let replyToText: String?
+    let replyToSenderId: String?
+
+    // MARK: - Reactions [userId: emoji]
+    let reactions: [String: String]
 
     init?(document: QueryDocumentSnapshot) {
 
@@ -70,7 +109,6 @@ struct Message: Identifiable {
         self.text = text
         self.timestamp = timestamp
 
-        // Default = sent
         if let statusString = data["status"] as? String,
            let messageStatus = MessageStatus(rawValue: statusString) {
 
@@ -80,7 +118,12 @@ struct Message: Identifiable {
 
             self.status = .sent
         }
+
+        self.deletedFor = data["deletedFor"] as? [String] ?? []
+
+        self.replyToText = data["replyToText"] as? String
+        self.replyToSenderId = data["replyToSenderId"] as? String
+
+        self.reactions = data["reactions"] as? [String: String] ?? [:]
     }
 }
-
-

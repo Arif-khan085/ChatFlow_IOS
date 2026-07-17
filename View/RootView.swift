@@ -5,36 +5,6 @@
 //  Created by Arif on 07/07/2026.
 //
 
-//import SwiftUI
-//
-//struct RootView: View {
-//
-//    @StateObject private var splashVM = SplashViewModel()
-//
-//    var body: some View {
-//
-//        Group {
-//
-//            switch splashVM.destination {
-//
-//            case .splash:
-//                SplashView()
-//
-//            case .onboarding:
-//                OnboardingView()
-//
-//            case .login:
-//                LoginView()
-//
-//            case .home:
-//                HomeView()
-//            }
-//        }
-//        .onAppear {
-//            splashVM.start()
-//        }
-//    }
-//}
 
 import SwiftUI
 
